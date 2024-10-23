@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net6.0\CRUD.Core.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net6.0\CRUD.Core.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0\CRUD.Core.deps.json" />
+    <Content Include="obj\CRUD.Core.csproj.nuget.dgspec.json" />
+    <Content Include="obj\Debug\net6.0\CRUD.Core.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\CRUD.Core.dll" />
+    <None Include="bin\Debug\net6.0\CRUD.Core.pdb" />
+    <None Include="CRUD.Core.csproj" />
+    <None Include="obj\CRUD.Core.csproj.nuget.g.props" />
+    <None Include="obj\CRUD.Core.csproj.nuget.g.targets" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.assets.cache" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.csproj.BuildWithSkipAnalyzers" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.dll" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net6.0\CRUD.Core.pdb" />
+    <None Include="obj\Debug\net6.0\refint\CRUD.Core.dll" />
+    <None Include="obj\Debug\net6.0\ref\CRUD.Core.dll" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.33" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.33" />
+  </ItemGroup>
+
+</Project>
