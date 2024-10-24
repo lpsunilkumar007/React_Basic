@@ -1,36 +1,55 @@
 import { useState } from "react";
 import { Client, ForgetPasswordModel } from "../../clientApi/ApiClient";
 import { useNavigate } from "react-router-dom";
+import * as yup from "yup";
 
 
 function ForgetPassword() {
   const [form, setForm] = useState({
     email: ""
   })
+  //Handle change in input field
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const navigate = useNavigate(); //usenavigate is use to navigate to other pages
+
+  //resetForm function reset the form and clear all the fields after form submission
   function resetForm() {
     setForm({ email: "" })
   }
+  //Creating oject of yup and defining the validation inside it  for email
+  const validationSchema = yup.object({
+    email: yup.string().email("Invalid email").required("Email is required").matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email enter"),
+  })
+  //Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError("");
+    setErrors({});
     try {
+      await validationSchema.validate(form, { abortEarly: false })
       const client = new Client();
       const forgetPassword = new ForgetPasswordModel();
       forgetPassword.init({
         email: form.email
       });
-      const response = await client.forgetPassword(forgetPassword);
-      console.log(" Reset Token successfully send to your mail", response)
-      navigate('/resetPassword')
+      await client.forgetPassword(forgetPassword);
+      console.log(" Reset Token successfully send to your mail")
       resetForm();
+      navigate('/resetPassword')
     } catch (error) {
-      setError("Please enter correct email address");
-      console.error("Something went wrong!!")
+      if (error instanceof yup.ValidationError) {
+        const newErrors: Record<string, string> = {};
+        error.inner.forEach(err => {
+          if (err.path) {
+            newErrors[err.path] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      } else {
+        alert("Something went wrong!!!");
+      }
     }
   }
   return (
@@ -41,9 +60,9 @@ function ForgetPassword() {
             <h2 className="text-center">Forget Password</h2>
             <p>Enter Email to reset the password</p>
             <form onSubmit={handleSubmit}>
-              <input className="form-control" type="email" name="email" id="email" onChange={handleChange} value={form.email} required placeholder="Email" />
+              <input className="form-control" type="email" name="email" id="email" onChange={handleChange} value={form.email} placeholder="Email" />
+              {errors.email && <div className="text-danger mb-2 pb-2">{errors.email}</div>}
               <button type="submit" className="form-control">Submitt</button>
-              {error && <div className="alert alert-danger">{error}</div>}
             </form>
           </div>
         </div>

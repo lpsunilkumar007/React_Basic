@@ -18,11 +18,11 @@ export default tseslint.config({
   languageOptions: {
     // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
@@ -31,11 +31,11 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from "eslint-plugin-react";
 
 export default tseslint.config({
   // Set the react version
-  settings: { react: { version: '18.3' } },
+  settings: { react: { version: "18.3" } },
   plugins: {
     // Add the react plugin
     react,
@@ -44,7 +44,20 @@ export default tseslint.config({
     // other rules...
     // Enable its recommended rules
     ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
+    ...react.configs["jsx-runtime"].rules,
   },
-})
+});
 ```
+
+# # Form validation client side in react using yup library
+
+For form validiton in client side we have used the the yup library of react which is used for form validation.
+Use Yup react library for the form validation
+
+- First install the package in project npm install yup
+- Then import it in the login.tsx and signup.tsx file.
+- Then use it to validate the form data.
+- After that we have set the validation for various input fields using yup object and store it in const varlidationSchema.
+- Once the validation is set to all the input fields then we use this validationSchema in the handleSubmit method.
+- If the validationSchema is true then after that other method are called and form is submitted.
+- If the validationSchema is false then the error message is shown to the user.
