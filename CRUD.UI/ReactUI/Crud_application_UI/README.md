@@ -61,3 +61,10 @@ Use Yup react library for the form validation
 - Once the validation is set to all the input fields then we use this validationSchema in the handleSubmit method.
 - If the validationSchema is true then after that other method are called and form is submitted.
 - If the validationSchema is false then the error message is shown to the user.
+
+# Apply onBlur event in form validation using yup library method
+
+- In this we have applied the onBlur event
+- Creating a function handleBlur to handle the blur event.
+- HandleBlur function use to display the error if the input fields in the form is not filled and move to the next field then it will show errors.
+- We have used the yup library method to display the error and to validate form.

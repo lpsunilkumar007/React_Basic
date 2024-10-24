@@ -1,9 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-
   height: 100vh;
   margin: 0;
-  background-color: #fff;
 }
 
 .container {
@@ -19,7 +17,7 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 400px;
 }
 
 .form-toggle {
@@ -77,4 +75,14 @@ body {
 
 .form p {
   text-align: center;
+}
+
+/* Add this */
+.navbar .ml-auto {
+  margin-left: auto;
+}
+
+.navbar .logout-btn {
+  margin-right: 15px;
+  margin-left: auto;
 }
